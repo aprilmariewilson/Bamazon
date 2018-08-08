@@ -2,11 +2,11 @@ const mysql = require('mysql');
 const request = require('request');
 const fs = require('fs');
 const inquirer = require('inquirer')
-let connection = mysql.createConnection({
+const connection = mysql.createConnection({
 	host: 'localhost',
 	port: 3306,
 	user: 'root',
-	password: '',
+	password: 'password',
 	database: 'bamazonDB'
 });
 connection.connect(function (err) {
@@ -84,7 +84,7 @@ function sodaSearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -106,7 +106,7 @@ function sodaSearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
@@ -129,7 +129,7 @@ function condimentsSearch() {
 			"Ice Cream Cones",
 			"Waffle Cones",
 			"Sugar Cones",
-			"Caramel sauce",
+			"Caramel Sauce",
 			"Strawberry Sauce",
 			"Chocolate Sauce"
 		]
@@ -150,7 +150,7 @@ function condimentsSearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -172,7 +172,7 @@ function condimentsSearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
@@ -213,7 +213,7 @@ function iceCreamSearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -235,7 +235,7 @@ function iceCreamSearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
@@ -277,7 +277,7 @@ function chipsSearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -299,7 +299,7 @@ function chipsSearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
@@ -340,7 +340,7 @@ function candySearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -362,7 +362,7 @@ function candySearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
@@ -403,7 +403,7 @@ function cookiesSearch() {
 			var stock = "SELECT stock_qty FROM products WHERE ?";
 			var price = "SELECT price FROM products WHERE ?";
 
-			connection.query(query, {'name':response.action}, function (err, res) {
+			connection.query(query, {'product_name':response.action}, function (err, res) {
 				// console.log(res);
 				if (err) throw err;
 				if (parseInt(amountAnswer.amount) > res[0].stock_qty) {
@@ -425,7 +425,7 @@ function cookiesSearch() {
 
 				} else if (amountAnswer.amount <= res[0].stock_qty) {
 					
-					connection.query(price, {'name': response.action}, function (err, res) {
+					connection.query(price, {'product_name': response.action}, function (err, res) {
 				
 					//decrease the item quantity amount in mysql
 					var newPrice = parseFloat(res[0].price);
